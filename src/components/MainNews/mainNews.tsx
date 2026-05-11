@@ -1,23 +1,42 @@
 import { View, Text, StyleSheet, ImageBackground, FlatList } from 'react-native'
-import React from 'react'
-import {styles} from './styles'
+import React, { useEffect, useState } from 'react'
+import { styles } from './styles'
+import axios from 'axios'
 
 export default function MainNews() {
+    const [topNews, setTopNews]= useState([]);
 
-    function renderMainNewsCard() {
+    useEffect(() => {
+        getMainNews();
+    }, []);
+
+    function getMainNews() {
+        const url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=c94b22defbd6451691718265f6dc1d73";
+        axios.get(url)
+            .then(res => { 
+                const articles = res.data?.articles?.filter(article=> article.urlToImage !== null);
+                setTopNews(articles);
+             })
+            .catch(err => { console.log(err) });
+    }
+
+    function renderMainNewsCard(item: any) {
+        console.log("rendering main news card");
         return (
             <ImageBackground
-                source={require("../../assets/images/background1.jpg")}
+                source={{
+                    uri: item.urlToImage
+                }}
                 style={styles.container}
                 resizeMode='cover'
             >
                 <View style={styles.internalContainer}>
                     <View style={styles.redContainer}>
                   
-                        <Text style={styles.textRedContainer}>Deadline</Text>
+                        <Text style={styles.textRedContainer}>{item.source?.name}</Text>
                     </View>
                     <Text style={styles.textInternalContainer}>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos odit suscipit voluptas reiciendis praesentium commodi porro dolorem harum eaque maiores cum odio molestiae, provident unde amet laboriosam ducimus totam doloribus.
+                        {item.title}
                     </Text>
                 </View>
       
@@ -27,8 +46,8 @@ export default function MainNews() {
 
     return (
         <FlatList
-            data={[1, 2, 3]}
-            renderItem={renderMainNewsCard}
+            data={topNews}
+            renderItem={({ item }) => renderMainNewsCard(item)}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             pagingEnabled
