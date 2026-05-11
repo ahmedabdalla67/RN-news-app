@@ -1,4 +1,5 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# RN-news-app
+A lightweight React Native demo project showcasing API calls with Axios, global state management using Zustand, and structured navigation flow.
 
 # Getting Started
 
