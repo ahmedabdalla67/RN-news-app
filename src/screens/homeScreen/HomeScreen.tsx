@@ -1,13 +1,15 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import Header from "../../components/Header/header";
 import MainNews from "../../components/MainNews/mainNews";
+import TopNews from "../../components/TopNews/TopNews";
 
 function HomeScreen() {
     return (
-        <View>
+        <ScrollView>
             <Header />
             <MainNews />
-        </View>
+            <TopNews />
+        </ScrollView>
     )
 }
 
