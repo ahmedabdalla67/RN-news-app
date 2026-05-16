@@ -1,28 +1,42 @@
-import { View, Text, StyleSheet, ImageBackground, FlatList } from 'react-native'
+import { View, Text, StyleSheet, ImageBackground, FlatList, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { styles } from './styles'
-import axios from 'axios'
+import { get } from '../../utils/helper/ApiService';
+import { ArticleType } from '../../Types/ArticleType';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import RouteName from '../../utils/routes/RouteName';
+import { MainStackParamList } from '../../Navigation/mainStack';
 
 export default function MainNews() {
-    const [topNews, setTopNews]= useState([]);
+    const [topNews, setTopNews]= useState<ArticleType[]>([]);
+    const { navigate } = useNavigation<NavigationProp<MainStackParamList, RouteName.HomeScreen>>();
 
     useEffect(() => {
         getMainNews();
     }, []);
 
+    function goToDetails(item: ArticleType) {
+        navigate(RouteName.ArticleDetails, {
+            article: item
+        });
+    }
+
     function getMainNews() {
-        const url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=c94b22defbd6451691718265f6dc1d73";
-        axios.get(url)
+        const url = "top-headlines?country=us";
+        get(url)
             .then(res => { 
-                const articles = res.data?.articles?.filter(article=> article.urlToImage !== null);
+                const articles = res.data?.articles?.filter((article: ArticleType) => article.urlToImage !== null);
                 setTopNews(articles);
              })
             .catch(err => { console.log(err) });
     }
 
-    function renderMainNewsCard(item: any) {
-        console.log("rendering main news card");
+    function renderMainNewsCard(item: ArticleType) {
+        console.log("rendering main news card, item: ", item);
         return (
+            <TouchableOpacity
+                onPress={() => goToDetails(item)}
+            >
             <ImageBackground
                 source={{
                     uri: item.urlToImage
@@ -40,7 +54,8 @@ export default function MainNews() {
                     </Text>
                 </View>
       
-            </ImageBackground>
+                </ImageBackground>
+            </TouchableOpacity>
         );
     }
 
