@@ -1,8 +1,8 @@
 import { View, Text, Image, FlatList } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import styles from './styles'
-import { ArticleType } from '../MainNews/types';
-import axios from 'axios';
+import { ArticleType } from '../../Types/ArticleType';
+import { get } from '../../utils/helper/ApiService';
 
 export default function TopNews() {
 
@@ -13,8 +13,8 @@ export default function TopNews() {
     }, []);
 
     function getMainNews() {
-        const url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=c94b22defbd6451691718265f6dc1d73";
-        axios.get(url)
+        const url = "top-headlines?country=us";
+        get(url)
             .then(res => {
                 const articles = res.data?.articles?.filter((article: ArticleType) => article.urlToImage !== null);
                 setArticles(articles);

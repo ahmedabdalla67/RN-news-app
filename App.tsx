@@ -6,15 +6,20 @@ import {
 } from 'react-native-safe-area-context';
 
 import HomeScreen from './src/screens/homeScreen/HomeScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import MainStack from './src/Navigation/mainStack';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <SafeAreaView>
+    <>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <HomeScreen />
-    </SafeAreaView>
+      <NavigationContainer>
+        <MainStack />
+      </NavigationContainer>
+    </>
+
   );
 }
 
