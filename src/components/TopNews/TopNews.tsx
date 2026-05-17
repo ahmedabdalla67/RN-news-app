@@ -1,12 +1,16 @@
-import { View, Text, Image, FlatList } from 'react-native'
+import { View, Text, Image, FlatList, Touchable, TouchableOpacity } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import styles from './styles'
 import { ArticleType } from '../../Types/ArticleType';
 import { get } from '../../utils/helper/ApiService';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { MainStackParamList } from '../../Navigation/mainStack';
+import RouteName from '../../utils/routes/RouteName';
 
 export default function TopNews() {
 
     const [articles, setArticles] = useState<ArticleType[]>([]);
+    const { navigate } = useNavigation<NavigationProp<MainStackParamList, RouteName.ArticleDetails>>();
 
     useEffect(() => {
         getMainNews();
@@ -22,12 +26,20 @@ export default function TopNews() {
             .catch(err => { console.log(err) });
     }
 
+    function goToDetails(item: ArticleType) { 
+        navigate(RouteName.ArticleDetails, {
+            article: item
+        });
+    }
+
     function renderItems(item: ArticleType) {
         return (
+            <TouchableOpacity onPress={() => goToDetails(item)}>
             <View style={styles.cardCont}>
                 <Image style={styles.cardArticleImage} source={{ uri: item.urlToImage }} />
                 <Text style={styles.cardArticleName}>{item.title}</Text>
-            </View>
+                </View>
+            </TouchableOpacity>
         );
     }
     return (
