@@ -1,4 +1,6 @@
 {
   "name": "FirstCliApp",
-  "slug": "FirstCliApp"
+  "slug": "firstcliapp",
+  "version": "1.0.0",
+  "orientation": "portrait"
 }

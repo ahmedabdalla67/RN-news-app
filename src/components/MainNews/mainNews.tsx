@@ -9,17 +9,15 @@ import { MainStackParamList } from '../../Navigation/mainStack';
 
 export default function MainNews() {
     const [topNews, setTopNews]= useState<ArticleType[]>([]);
-    const { navigate } = useNavigation<NavigationProp<MainStackParamList, RouteName.HomeScreen>>();
+    // const { navigate } = useNavigation<NavigationProp<MainStackParamList,RouteName.HomeScreen>>();
 
     useEffect(() => {
         getMainNews();
     }, []);
 
-    function goToDetails(item: ArticleType) {
-        navigate(RouteName.ArticleDetails, {
-            article: item
-        });
-    }
+    // function goToDetails(item: ArticleType) {
+    //     navigate(RouteName.ArticleDetails,{ article: item });
+    // }
 
     function getMainNews() {
         const url = "top-headlines?country=us";
@@ -35,7 +33,7 @@ export default function MainNews() {
         console.log("rendering main news card, item: ", item);
         return (
             <TouchableOpacity
-                onPress={() => goToDetails(item)}
+                // onPress={() => goToDetails(item)}
             >
             <ImageBackground
                 source={{

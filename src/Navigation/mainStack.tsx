@@ -5,6 +5,8 @@ import HomeScreen from '../screens/homeScreen/HomeScreen';
 import ArticleDetails from '../components/ArticleDetails/ArticleDetails';
 import RouteName from '../utils/routes/RouteName';
 import { ArticleType } from '../Types/ArticleType';
+import AuthStack from './Stack/AuthStack';
+import MainTabs from './MainTabs/MainTabs';
 
 const Stack = createStackNavigator<MainStackParamList>();
 export default function MainStack() {
@@ -16,15 +18,13 @@ export default function MainStack() {
             }
             }
         >
-            <Stack.Screen name={RouteName.HomeScreen} component={HomeScreen} />
-            <Stack.Screen name={RouteName.ArticleDetails} component={ArticleDetails} />
+            <Stack.Screen name={RouteName.AuthStack} component={AuthStack} />
+            <Stack.Screen name={RouteName.MainTabs} component={MainTabs} />
         </Stack.Navigator>
     );
 }
 
 export type MainStackParamList = {
-    [RouteName.HomeScreen]: undefined;
-    [RouteName.ArticleDetails]: {
-        article: ArticleType
-    }
+    [RouteName.AuthStack]: undefined;
+    [RouteName.MainTabs]: undefined;
 }

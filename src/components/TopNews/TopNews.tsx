@@ -10,7 +10,7 @@ import RouteName from '../../utils/routes/RouteName';
 export default function TopNews() {
 
     const [articles, setArticles] = useState<ArticleType[]>([]);
-    const { navigate } = useNavigation<NavigationProp<MainStackParamList, RouteName.ArticleDetails>>();
+    // const { navigate } = useNavigation<NavigationProp<MainStackParamList, RouteName.ArticleDetails>>();
 
     useEffect(() => {
         getMainNews();
@@ -26,15 +26,15 @@ export default function TopNews() {
             .catch(err => { console.log(err) });
     }
 
-    function goToDetails(item: ArticleType) { 
-        navigate(RouteName.ArticleDetails, {
-            article: item
-        });
-    }
+    // function goToDetails(item: ArticleType) { 
+    //     navigate(RouteName.ArticleDetails, {
+    //         article: item
+    //     });
+    // }
 
     function renderItems(item: ArticleType) {
         return (
-            <TouchableOpacity onPress={() => goToDetails(item)}>
+            <TouchableOpacity>
             <View style={styles.cardCont}>
                 <Image style={styles.cardArticleImage} source={{ uri: item.urlToImage }} />
                 <Text style={styles.cardArticleName}>{item.title}</Text>

@@ -8,13 +8,13 @@ import { styles } from './styles'
 
 export default function ArticleDetails() {
     const {goBack} = useNavigation();
-    const { params } = useRoute<RouteProp<MainStackParamList, RouteName.ArticleDetails>>();
-    const { article } = params ?? {};
-    const { title, description, urlToImage } = article ?? {};
+    // const { params } = useRoute<RouteProp<MainStackParamList, RouteName.ArticleDetails>>();
+    // const { article } = params ?? {};
+    // const { title, description, urlToImage } = article ?? {};
     
   return (
       <SafeAreaView>
-          <ScrollView>
+          {/* <ScrollView>
               <View style={styles.header}>
 
                   <Text onPress={goBack} style={styles.headerBtn}>
@@ -28,7 +28,7 @@ export default function ArticleDetails() {
                   </Text>
                   <Text>{description}</Text>
               </View>
-          </ScrollView>
+          </ScrollView> */}
       </SafeAreaView>
   )
 }
