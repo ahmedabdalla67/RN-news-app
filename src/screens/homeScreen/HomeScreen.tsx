@@ -6,13 +6,13 @@ import TopNews from "../../components/TopNews/TopNews";
 
 function HomeScreen() {
     return (
-        <SafeAreaView>
+        // <SafeAreaView>
             <ScrollView>
                 <Header />
                 <MainNews />
                 <TopNews />
             </ScrollView>
-        </SafeAreaView>
+        // {/* </SafeAreaView> */ }
 
     )
 }

@@ -5,20 +5,18 @@ import { get } from '../../utils/helper/ApiService';
 import { ArticleType } from '../../Types/ArticleType';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import RouteName from '../../utils/routes/RouteName';
-import { MainStackParamList } from '../../Navigation/mainStack';
+import { HomeStackParamList } from '../../Navigation/Stack/HomeStack';
 
 export default function MainNews() {
     const [topNews, setTopNews]= useState<ArticleType[]>([]);
-    const { navigate } = useNavigation<NavigationProp<MainStackParamList, RouteName.HomeScreen>>();
+    const { navigate } = useNavigation<NavigationProp<HomeStackParamList, RouteName.HomeScreen>>();
 
     useEffect(() => {
         getMainNews();
     }, []);
 
     function goToDetails(item: ArticleType) {
-        navigate(RouteName.ArticleDetails, {
-            article: item
-        });
+        navigate(RouteName.ArticleDetails, { article: item });
     }
 
     function getMainNews() {
