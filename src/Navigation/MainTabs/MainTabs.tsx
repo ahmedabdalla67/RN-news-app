@@ -4,6 +4,7 @@ import HomeScreen from "../../screens/homeScreen/HomeScreen";
 import FavoriteScreen from "../../components/FavoriteArticles/FavoriteScreen";
 import React from "react";
 import Ionicons from "@react-native-vector-icons/ionicons";
+import HomeStack from "../Stack/HomeStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -15,7 +16,7 @@ export default function MainTabs() {
             }}
         >
             <Tab.Screen
-                name={RouteName.HomeScreen} component={HomeScreen}
+                name={RouteName.HomeStack} component={HomeStack}
                 options={{
                     tabBarLabel: "Home",
                     tabBarIcon: ({ color }) => {

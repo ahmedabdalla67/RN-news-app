@@ -2,19 +2,19 @@ import { View, Text, ScrollView, Image } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
-import { MainStackParamList } from '../../Navigation/mainStack'
 import RouteName from '../../utils/routes/RouteName'
 import { styles } from './styles'
+import { HomeStackParamList } from '../../Navigation/Stack/HomeStack'
 
 export default function ArticleDetails() {
     const {goBack} = useNavigation();
-    // const { params } = useRoute<RouteProp<MainStackParamList, RouteName.ArticleDetails>>();
-    // const { article } = params ?? {};
-    // const { title, description, urlToImage } = article ?? {};
+    const { params } = useRoute<RouteProp<HomeStackParamList, RouteName.ArticleDetails>>();
+    const { article } = params ?? {};
+    const { title, description, urlToImage } = article ?? {};
     
   return (
-      <SafeAreaView>
-          {/* <ScrollView>
+      //   <SafeAreaView>
+      <ScrollView>
               <View style={styles.header}>
 
                   <Text onPress={goBack} style={styles.headerBtn}>
@@ -28,7 +28,7 @@ export default function ArticleDetails() {
                   </Text>
                   <Text>{description}</Text>
               </View>
-          </ScrollView> */}
-      </SafeAreaView>
+      </ScrollView>
+      //   </SafeAreaView>
   )
 }

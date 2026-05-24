@@ -4,7 +4,8 @@
      LoginScreen = "LoginScreen",
      AuthStack = "AuthStack",
      FavoriteArticles = "FavoriteArticles",
-        MainTabs = "MainTabs"
+     MainTabs = "MainTabs",
+        HomeStack = "HomeStack"
 }
 
 export default RouteName;
