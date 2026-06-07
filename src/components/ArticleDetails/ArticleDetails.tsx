@@ -13,7 +13,7 @@ export default function ArticleDetails() {
     const { title, description, urlToImage } = article ?? {};
     
   return (
-      //   <SafeAreaView>
+        <SafeAreaView>
       <ScrollView>
               <View style={styles.header}>
 
@@ -29,6 +29,6 @@ export default function ArticleDetails() {
                   <Text>{description}</Text>
               </View>
       </ScrollView>
-      //   </SafeAreaView>
+         </SafeAreaView>
   )
 }

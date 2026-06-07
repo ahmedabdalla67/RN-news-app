@@ -27,8 +27,11 @@ export default function TopNews() {
     }
 
     function goToDetails(item: ArticleType) { 
-        navigate(RouteName.ArticleDetails, {
-            article: item
+        navigate(RouteName.SharedStack, {
+            screen: RouteName.ArticleDetails,
+            params: {
+                article: item
+            }
         });
     }
 

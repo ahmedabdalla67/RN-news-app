@@ -5,7 +5,8 @@
      AuthStack = "AuthStack",
      FavoriteArticles = "FavoriteArticles",
      MainTabs = "MainTabs",
-        HomeStack = "HomeStack"
+    HomeStack = "HomeStack",
+        SharedStack = "SharedStack"
 }
 
 export default RouteName;

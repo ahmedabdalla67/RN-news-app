@@ -1,12 +1,9 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import {createStackNavigator} from '@react-navigation/stack'
-import HomeScreen from '../screens/homeScreen/HomeScreen';
-import ArticleDetails from '../components/ArticleDetails/ArticleDetails';
 import RouteName from '../utils/routes/RouteName';
-import { ArticleType } from '../Types/ArticleType';
 import AuthStack from './Stack/AuthStack';
 import MainTabs from './MainTabs/MainTabs';
+import SharedStack from './Stack/SharedStack';
 
 const Stack = createStackNavigator<MainStackParamList>();
 export default function MainStack() {
@@ -20,6 +17,7 @@ export default function MainStack() {
         >
             <Stack.Screen name={RouteName.AuthStack} component={AuthStack} />
             <Stack.Screen name={RouteName.MainTabs} component={MainTabs} />
+            <Stack.Screen name={RouteName.SharedStack} component={SharedStack} />
         </Stack.Navigator>
     );
 }
@@ -27,4 +25,5 @@ export default function MainStack() {
 export type MainStackParamList = {
     [RouteName.AuthStack]: undefined;
     [RouteName.MainTabs]: undefined;
+    [RouteName.SharedStack]: undefined;
 }
