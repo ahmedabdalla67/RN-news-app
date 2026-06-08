@@ -1,9 +1,10 @@
 import React from 'react'
 import {createStackNavigator} from '@react-navigation/stack'
+import { NavigatorScreenParams } from '@react-navigation/native';
 import RouteName from '../utils/routes/RouteName';
 import AuthStack from './Stack/AuthStack';
 import MainTabs from './MainTabs/MainTabs';
-import SharedStack from './Stack/SharedStack';
+import SharedStack, { SharedStackParamList } from './Stack/SharedStack';
 
 const Stack = createStackNavigator<MainStackParamList>();
 export default function MainStack() {
@@ -25,5 +26,5 @@ export default function MainStack() {
 export type MainStackParamList = {
     [RouteName.AuthStack]: undefined;
     [RouteName.MainTabs]: undefined;
-    [RouteName.SharedStack]: undefined;
+    [RouteName.SharedStack]: NavigatorScreenParams<SharedStackParamList>;
 }

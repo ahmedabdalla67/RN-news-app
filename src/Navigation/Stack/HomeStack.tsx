@@ -19,5 +19,4 @@ export default function HomeStack() {
 
 export type HomeStackParamList = {
     [RouteName.HomeScreen]: undefined;
-    // [RouteName.ArticleDetails]: { article: ArticleType };
 }
