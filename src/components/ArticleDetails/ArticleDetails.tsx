@@ -4,16 +4,16 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 import RouteName from '../../utils/routes/RouteName'
 import { styles } from './styles'
-import { HomeStackParamList } from '../../Navigation/Stack/HomeStack'
+import { SharedStackParamList } from '../../Navigation/Stack/SharedStack'
 
 export default function ArticleDetails() {
     const {goBack} = useNavigation();
-    const { params } = useRoute<RouteProp<HomeStackParamList, RouteName.ArticleDetails>>();
+    const { params } = useRoute<RouteProp<SharedStackParamList, RouteName.ArticleDetails>>();
     const { article } = params ?? {};
     const { title, description, urlToImage } = article ?? {};
     
   return (
-      //   <SafeAreaView>
+        <SafeAreaView>
       <ScrollView>
               <View style={styles.header}>
 
@@ -29,6 +29,6 @@ export default function ArticleDetails() {
                   <Text>{description}</Text>
               </View>
       </ScrollView>
-      //   </SafeAreaView>
+         </SafeAreaView>
   )
 }
