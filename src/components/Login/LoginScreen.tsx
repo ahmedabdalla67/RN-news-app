@@ -1,4 +1,5 @@
 import { View, Text, TouchableOpacity, TextInput } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context';
 import React from 'react'
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import RouteName from '../../utils/routes/RouteName';
@@ -11,15 +12,18 @@ export default function LoginScreen() {
         navigate(RouteName.MainTabs);
     }
     return (
-        <View style={styles.mainContainer}>
+        <SafeAreaView style={styles.mainContainer}>
             <Text style={styles.loginText}>Login</Text>
             <Text style={styles.noteText}>Hello again login to MK News</Text>
             <View style={styles.frame}>
                 <Text style={styles.labelText}>UserName</Text>
-                <TextInput style={styles.textInput} placeholder='Enter UserName' />
+                <TextInput style={styles.textInput} placeholder='Enter UserName' textContentType='username' />
                 <Text style={styles.labelText}>Password</Text>
-                <TextInput style={styles.textInput} placeholder='Enter Password' />
+                <TextInput style={styles.textInput} placeholder='Enter Password' secureTextEntry={ true } textContentType='password' />
             </View>
-        </View>
+            <TouchableOpacity onPress={clickLogin} style={styles.btn}>
+                <Text style={styles.textBtn}>Login</Text>
+                </TouchableOpacity>
+        </SafeAreaView>
     );
 }
